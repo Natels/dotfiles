@@ -54,6 +54,6 @@
 [credential]
     helper = osxkeychain
 [gpg]
-	program = /usr/local/bin/gpg
+	program = /opt/homebrew/bin/gpg
 [commit]
 	gpgsign = true
