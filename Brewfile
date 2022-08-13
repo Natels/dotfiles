@@ -5,6 +5,7 @@ tap 'homebrew/bundle'
 tap 'homebrew/cask-drivers'
 
 brew 'jq'
+brew 'node'
 brew 'mas'
 brew 'zsh-syntax-highlighting'
 brew 'gpg2'
