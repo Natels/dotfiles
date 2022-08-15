@@ -17,6 +17,8 @@
 [core]
     excludesfile = ~/.gitignore
     editor = vim
+[init]
+	defaultBranch = main
 [apply]
     whitespace = nowarn
 [fetch]
@@ -57,3 +59,9 @@
 	program = /opt/homebrew/bin/gpg
 [commit]
 	gpgsign = true
+[tag]
+	gpgsign = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[alias]
+	tag-md = tag --annotate --cleanup=whitespace --edit --message ""
