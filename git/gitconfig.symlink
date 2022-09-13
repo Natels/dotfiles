@@ -9,6 +9,7 @@
     wtf     = !$ZSH/bin/git-wtf
     rank-contributors = !$ZSH/bin/git-rank-contributors
     count   = !git shortlog -sn
+	tag-md  = tag --annotate --cleanup=whitespace --edit --message ""
 [color]
     diff = auto
     status = auto
@@ -65,5 +66,3 @@
 	gpgsign = true
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
-[alias]
-	tag-md = tag --annotate --cleanup=whitespace --edit --message ""
