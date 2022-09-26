@@ -14,6 +14,8 @@ Plug 'tpope/vim-surround'
 
 Plug 'scrooloose/nerdtree'
 
+Plug 'christoomey/vim-tmux-navigator'
+
 Plug 'vim-airline/vim-airline'
 
 Plug 'airblade/vim-gitgutter'
@@ -25,9 +27,7 @@ Plug 'fatih/vim-go'
 
 Plug 'vim-test/vim-test'
 
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -45,10 +45,6 @@ filetype plugin indent on
 " In JavaScript and TypeScript files, use 2 spaces
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
-
-" Colorscheme
-set background=dark
-colorscheme dracula
 
 " Refresh every 100ms
 set updatetime=100
@@ -84,15 +80,11 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Map changing window pane to wj, wk, wl, wh
-" instead of ctrl+w and then a direction.
-nnoremap wj <C-W><C-J>
-nnoremap wk <C-W><C-K>
-nnoremap wl <C-W><C-L>
-nnoremap wh <C-W><C-H>
-
 " Run tests asynchronously
 let test#strategy = "dispatch"
+
+" Write current buffer before navigating from vim to tmux pane
+let g:tmux_navigator_save_on_switch = 1
 
 " Add function to format JSON
 com! FormatJSON %!python -m json.tool
