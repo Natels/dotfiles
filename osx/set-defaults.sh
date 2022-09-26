@@ -115,10 +115,9 @@ defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool YES
 # Kill affected applications                                                  #
 ###############################################################################
 
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-	"Alfred 2" "Dock" "Finder" "Mail" "Messages" \
-	"Opera" "Photos" "Safari" "Spectacle" "SystemUIServer" \
-	"Tweetbot" "Twitter" "iCal"; do
+for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" \
+	"Dock" "Finder" "Mail" "Messages" \
+	"Photos" "Safari" "SystemUIServer"; do
 	killall "${app}" &> /dev/null
 done
 echo "Finished setting system defaults. Note that some of these changes require a logout/restart to take effect."
