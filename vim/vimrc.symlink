@@ -27,20 +27,18 @@ Plug 'fatih/vim-go'
 
 Plug 'vim-test/vim-test'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tmux-plugins/vim-tmux-focus-events'
+
+Plug 'Exafunction/codeium.vim'
 
 call plug#end()
-
-" Automatically install missing plugins on startup
-if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
-	autocmd VimEnter * PlugInstall | q
-endif
 
 syntax on
 filetype plugin indent on
 
 :set tabstop=4
 :set shiftwidth=4
+:set nowrap
 
 " In JavaScript and TypeScript files, use 2 spaces
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
@@ -64,21 +62,18 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-" Map ctrl+p to fuzzy search
-let g:ctrlp_map = '<c-p>'
-
-" Open NERDTree with ctrl+n
-map <C-n> :NERDTreeToggle<CR>
+" Open NERDTree with leader+n
+map <leader>n :NERDTreeToggle<CR>
 
 " Open NERDTree on startup if no file specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-" Add key mappings for code navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" Insert mode cursor movement
+imap <C-n> <C-o>j
+imap <C-p> <C-o>k
+imap <C-h> <C-o>h
+imap <C-l> <C-o>l
 
 " Run tests asynchronously
 let test#strategy = "dispatch"
@@ -102,3 +97,6 @@ if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
 
+" Autoread on focus events
+set autoread
+au FocusGained,BufEnter * :checktime

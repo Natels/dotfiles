@@ -8,7 +8,6 @@ brew 'jq'
 brew 'node'
 brew 'mas'
 brew 'zsh-syntax-highlighting'
-brew 'gpg2'
 brew 'pinentry-mac'
 
 cask 'proxyman'
