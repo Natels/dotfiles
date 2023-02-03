@@ -57,7 +57,7 @@
 	# I didn't write this, and I can't recall where it came from
 	pretty = %C(dim)%ci%C(reset) %C(dim)%p%C(reset) %C(cyan dim)%h%C(reset)%C(cyan)%d%C(reset) %C(yellow)|%C(reset) %s %C(dim)by %an %ar.%C(reset)
 [pull]
-	ff = only	
+	ff = only
 [filter "lfs"]
     required = true
 	clean = git-lfs clean -- %f
@@ -73,7 +73,3 @@
 	insteadOf = https://github.com/
 [gpg]
 	format = ssh
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-[user]
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGMDgo59YfBhVkcBWk7MVbH58Q4YlIrsW/GBAAVu5t//

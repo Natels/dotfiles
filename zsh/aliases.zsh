@@ -6,4 +6,4 @@
 alias dotfiles="vi ~/.dotfiles"
 alias reload!=". ~/.zshrc"
 alias trash="rmtrash"
-
+alias py="python3"

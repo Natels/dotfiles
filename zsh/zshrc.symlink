@@ -1,7 +1,8 @@
 # Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 
 # Only error if all globs are empty
-# setopt CS_GLOB_NULL
+setopt CS_GLOB_NULL
 
 # Enable fish-style syntax highlighting
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -52,15 +53,19 @@ autoload -U bashcompinit
 compinit
 bashcompinit
 
-eval "$(grit shell-integration)"
-
 JAVA_HOME="/usr/bin/java"
 
 export PATH=${PATH}:`go env GOPATH`/bin
 export PATH=${PATH}:/Users/nate/swift/bin
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH=${PATH}:.cargo/bin
+export PATH=${PATH}:.swift/bin
 
 export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
+source /opt/homebrew/opt/powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

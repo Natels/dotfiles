@@ -82,7 +82,7 @@ let test#strategy = "dispatch"
 let g:tmux_navigator_save_on_switch = 1
 
 " Add function to format JSON
-com! FormatJSON %!python -m json.tool
+com! FormatJSON %!jq
 
 " CoC extensions
 let g:coc_global_extensions = ['coc-tsserver', 'coc-json']
