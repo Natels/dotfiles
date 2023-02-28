@@ -29,7 +29,7 @@ Plug 'vim-test/vim-test'
 
 Plug 'tmux-plugins/vim-tmux-focus-events'
 
-Plug 'Exafunction/codeium.vim'
+Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -40,6 +40,16 @@ filetype plugin indent on
 :set shiftwidth=4
 :set nowrap
 
+" Enable CoPilot in Markdown, YAML, and Git commit files
+let g:copilot_filetypes = {
+    \ 'gitcommit': v:true,
+    \ 'markdown': v:true,
+    \ 'yaml': v:true
+    \ }
+
+" Disable CoPilot in buffers over 100KB
+let g:copilot_max_file_size = 100000
+
 " In JavaScript and TypeScript files, use 2 spaces
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
@@ -49,9 +59,6 @@ set updatetime=100
 
 " Show line numbers
 set number
-
-" Highlight cursor line
-set cursorline
 
 " Case insensitive searches
 set ignorecase

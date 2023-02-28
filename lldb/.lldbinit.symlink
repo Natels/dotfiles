@@ -1,0 +1,2 @@
+command script import ~.dotfiles/lldb_commands/dslldb.py
+command alias poc expression -L objc -O --

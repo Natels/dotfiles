@@ -1,8 +1,5 @@
-# Local/private config goes in the include
-[include]
-    path = ~/.gitconfig.local
 [hub]
-    protocol = https
+  protocol = https
 [alias]
 	co = checkout
 	tag-md  = tag --annotate --cleanup=whitespace --edit --message ""
@@ -12,44 +9,44 @@
 	a = add .
 	unstage = reset HEAD --
 [color]
-    diff = auto
-    status = auto
-    branch = auto
-    ui = true
+  diff = auto
+  status = auto
+  branch = auto
+  ui = true
 [core]
-    excludesfile = ~/.gitignore
-    editor = vim
+  excludesfile = ~/.gitignore
+  editor = nvim
 [init]
 	defaultBranch = main
 [apply]
-    whitespace = nowarn
+  whitespace = nowarn
 [fetch]
-    prune = true
+  prune = true
 [merge]
 	tool = Kaleidoscope
 [mergetool]
-    prompt = false
-    keepBackups = false
+  prompt = false
+  keepBackups = false
 [mergetool "mergepbx"]
-    cmd = mergepbx "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
+  cmd = mergepbx "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" \"$REMOTE\"
 #driver for merging Xcode project files
 [merge "mergepbx"]
-    name = Xcode project files merger
-    driver = mergepbx %O %A %B
+  name = Xcode project files merger
+  driver = mergepbx %O %A %B
 [difftool]
-    prompt = false
+  prompt = false
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [help]
-    autocorrect = 1
+  autocorrect = 1
 [push]
-        # See `git help config` (search for push.default)
-        # for more information on different options of the below setting.
-        #
-        # Setting to git 2.0 default to suppress warning message
-    default = current
+  # See `git help config` (search for push.default)
+  # for more information on different options of the below setting.
+  #
+  # Setting to git 2.0 default to suppress warning message
+  default = current
 	followTags = true
 	autoSetupRemote = true
 [format]
@@ -59,12 +56,12 @@
 [pull]
 	ff = only
 [filter "lfs"]
-    required = true
+  required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 [credential]
-    helper = osxkeychain
+  helper = osxkeychain
 [commit]
 	gpgsign = true
 [tag]
@@ -73,3 +70,6 @@
 	insteadOf = https://github.com/
 [gpg]
 	format = ssh
+# Local/private config goes in the include
+[include]
+  path = ~/.gitconfig.local
