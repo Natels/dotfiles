@@ -4,7 +4,6 @@
 #
 # `dot` handles installation, updates, things like that. Run it periodically
 # to make sure you're on the latest and greatest.
-export DOT_PATH=$HOME/.dotfiles
 
 # Set OS X defaults
 $DOT_PATH/osx/set-defaults.sh

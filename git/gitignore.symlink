@@ -1,15 +1,22 @@
+# files created by macOS
 .DS_Store
-*~
-*.swp
 .AppleDouble
-.gitattributes
-build
-.idea
-.gitconfig
-.pixeltest
-pixeltest_failures.html
 .LSOverride
 .Spotlight-v100
 .Trashes
-Desktop.ini
+.nfs.*
+
+# editor configuration
+/.idea/
 /.vscode/
+.vs/
+*.xcuser*
+
+# common caches
+/build/
+/artifacts/
+
+# misc
+*.swp
+.gitattributes
+.gitconfig

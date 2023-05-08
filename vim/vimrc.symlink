@@ -36,9 +36,19 @@ call plug#end()
 syntax on
 filetype plugin indent on
 
-:set tabstop=4
-:set shiftwidth=4
+:set tabstop=2
+:set shiftwidth=2
+:set colorcolumn=80
 :set nowrap
+:set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
+:set list
+
+" Enable CoPilot in Markdown, YAML, and Git Commit files
+let g:copilot_filetypes = {
+	\ 'markdown': v:true,
+	\ 'yaml': v:true,
+	\ 'gitcommit': v:true
+	\ }
 
 " Enable CoPilot in Markdown, YAML, and Git commit files
 let g:copilot_filetypes = {
@@ -59,6 +69,12 @@ set updatetime=100
 
 " Show line numbers
 set number
+
+" Change cursor shape between insert and normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
 
 " Case insensitive searches
 set ignorecase
