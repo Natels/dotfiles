@@ -56,7 +56,7 @@ done
 
 unset config_files
 
-export PATH="/opt/homebrew/opt/kubernetes-cli@1.22/bin:$PATH"
+bindkey ' ' magic-space
 
 autoload -U compinit
 autoload -U bashcompinit
@@ -70,3 +70,4 @@ export PATH=${PATH}:/Users/nate/swift/bin
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH=${PATH}:.cargo/bin
 export PATH=${PATH}:.swift/bin
+export PATH="/opt/homebrew/opt/kubernetes-cli@1.22/bin:$PATH"
