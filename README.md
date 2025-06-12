@@ -25,7 +25,7 @@ files for my terminal, shell, prompt, macOS, and other software.
 > anyone else without heavy modification.
 
 ```shell
-bash <(curl -fsSL https://raw.githubusercontent.com/ezzatron/dotfiles/main/install)
+bash <(curl -fsSL https://raw.githubusercontent.com/natels/dotfiles/main/install)
 ```
 
 <!-- References -->
