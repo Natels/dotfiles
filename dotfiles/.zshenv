@@ -21,8 +21,8 @@ if [[ $SHLVL = 1 ]]; then
     # use vim as the editor when using SSH
     export EDITOR="vim"
   else
-    # use VSCode as the editor when not using SSH
-    export EDITOR="code --wait"
+    # use neovim as the editor when not using SSH
+    export EDITOR="nvim"
   fi
 
   # default options for less
