@@ -6,141 +6,86 @@ git --version
 
 # Prompt immediately for sudo, and keep it alive while the install script runs
 sudo -v
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done &>/dev/null &
+while true; do
+  sudo -n true
+  sleep 60
+  kill -0 "$$" || exit
+done &>/dev/null &
 
 if [[ "$(uname -p)" == "arm" ]]; then
-    if [[ -f /Library/Apple/usr/share/rosetta/rosetta ]]; then
-        echo "Rosetta already installed."
-    else
-        echo "Installing Rosetta..."
-        sudo softwareupdate --install-rosetta --agree-to-license
-    fi
+  if [[ -f /Library/Apple/usr/share/rosetta/rosetta ]]; then
+    echo "Rosetta already installed."
+  else
+    echo "Installing Rosetta..."
+    sudo softwareupdate --install-rosetta --agree-to-license
+  fi
 fi
 
 if [[ -e /opt/homebrew/bin/brew || -e /usr/local/bin/brew ]]; then
-    echo "Homebrew already installed."
+  echo "Homebrew already installed."
 else
-    echo "Installing Homebrew..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 if [[ -e /opt/homebrew/bin/brew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [[ -e /usr/local/bin/brew ]]; then
-    eval "$(/usr/local/bin/brew shellenv)"
+  eval "$(/usr/local/bin/brew shellenv)"
 fi
 
 if hash jq &>/dev/null; then
-    echo "jq already installed."
+  echo "jq already installed."
 else
-    echo "Installing jq..."
-    brew install jq
+  echo "Installing jq..."
+  brew install jq
 fi
 
 if hash mas &>/dev/null; then
-    echo "mas already installed."
+  echo "mas already installed."
 else
-    echo "Installing mas..."
-    brew install mas
+  echo "Installing mas..."
+  brew install mas
 fi
 
-if [[ -d /Applications/1Password.app ]]; then
-    echo "1Password already installed."
-else
-    echo "Installing 1Password..."
-    brew install --cask 1password
-fi
-
-if hash op &>/dev/null; then
-    echo "1Password CLI already installed."
-else
-    echo "Installing 1Password CLI..."
-    brew install --cask 1password-cli
-fi
-
-echo "First, add your personal 1Password account to the app, then enable the following options in the preferences:"
-echo
-echo "    - Developer > 1Password SSH Agent > Use the SSH agent"
-echo "    - Developer > Command-Line Interface (CLI) > Connect with 1Password CLI"
-echo
-
-open "/Applications/1Password.app"
-
-read -p "Have you configured the specified options? [yn] " -n 1 -r
-echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-    echo "Unable to continue without configuring 1Password."
-    exit 1
-fi
-
-until op account get --account my &>/dev/null
-do
-    echo "1Password CLI session not detected."
-    echo "Signing in to 1Password CLI..."
-    eval $(op signin --account=my)
-done
-
-if [[ -f "$HOME/.ssh/config" ]]; then
-    echo "SSH already configured."
-else
-    echo "Temporarily configuring SSH to use the 1Password SSH agent..."
-    mkdir -p "$HOME/.ssh"
-    echo 'Host *
-    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"' > "$HOME/.ssh/config"
-fi
-
-# Waiting on https://github.com/mas-cli/mas/issues/417
-# if mas account &>/dev/null; then
-#     echo "App store sign in detected."
-# else
-#     op item get --reveal --account=my --vault=Personal Apple --fields=password | tr -d '\n' | pbcopy
-#     echo "Sign in to the app store first. Password has been copied to the clipboard."
-#     mas open
-#     open "x-apple.systempreferences:com.apple.preferences.AppleIDPrefPane"
-#     exit 1
-# fi
-
-op item get --reveal --account=my --vault=Personal Apple --fields=password | tr -d '\n' | pbcopy
-echo "Sign in to the app store first. Password has been copied to the clipboard."
+echo "Sign in to the app store first."
 mas open
 open "x-apple.systempreferences:com.apple.preferences.AppleIDPrefPane"
 
 read -p "Have you signed in? [yn] " -n 1 -r
 echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-    echo "Unable to continue without app store sign in."
-    exit 1
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  echo "Unable to continue without app store sign in."
+  exit 1
 fi
 
 if [[ -z "$GH_USER" ]]; then
-    echo -n "GitHub user: "
-    read GH_USER
+  echo -n "GitHub user: "
+  read GH_USER
 fi
 
 if [[ -z "$GH_USER" ]]; then
-    echo "GH_USER not defined."
-    exit 1
+  echo "GH_USER not defined."
+  exit 1
 fi
 
 DOTFILES_PATH="$HOME/grit/github.com/$GH_USER/dotfiles"
 
 if [[ -d "$DOTFILES_PATH" ]]; then
-    echo "Pulling $GH_USER/dotfiles..."
-    pushd "$DOTFILES_PATH" &>/dev/null
-    git pull
-    popd &>/dev/null
+  echo "Pulling $GH_USER/dotfiles..."
+  pushd "$DOTFILES_PATH" &>/dev/null
+  git pull
+  popd &>/dev/null
 else
-    echo "Cloning $GH_USER/dotfiles..."
-    git clone "git@github.com:$GH_USER/dotfiles.git" "$DOTFILES_PATH"
+  echo "Cloning $GH_USER/dotfiles..."
+  git clone "git@github.com:$GH_USER/dotfiles.git" "$DOTFILES_PATH"
 fi
 
 if [[ -e "$HOME/dotfiles" ]]; then
-    echo "Dotfiles directory shortcut already exists."
+  echo "Dotfiles directory shortcut already exists."
 else
-    echo "Creating dotfiles directory shortcut..."
-    ln -s "$DOTFILES_PATH" "$HOME/dotfiles"
+  echo "Creating dotfiles directory shortcut..."
+  ln -s "$DOTFILES_PATH" "$HOME/dotfiles"
 fi
 
 for FILE in "$HOME/dotfiles/setup/"*-*.bash; do

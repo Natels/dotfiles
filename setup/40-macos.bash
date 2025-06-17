@@ -2,15 +2,15 @@ set -e
 
 echo "Applying macOS defaults..."
 
-function plist-set-or-add () {
+function plist-set-or-add() {
   local ENTRY="$1"
   local TYPE="$2"
   local VALUE="$3"
   local PLIST="$4"
 
   /usr/libexec/PlistBuddy -c "Set $1 $3" "$4" ||
-  /usr/libexec/PlistBuddy -c "Add $1 $2 $3" "$4" ||
-  echo "Unable to set or add plist with args:" "$@"
+    /usr/libexec/PlistBuddy -c "Add $1 $2 $3" "$4" ||
+    echo "Unable to set or add plist with args:" "$@"
 }
 
 # turn off font smoothing (better for Retina displays, but worse for non-Retina)
@@ -116,11 +116,11 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 # Disable the Dock by default
 defaults write com.apple.dock autohide-delay -float 1000
 
-# Right-oriented Dock
-defaults write com.apple.Dock orientation -string "right"
+# Left-oriented Dock
+defaults write com.apple.Dock orientation -string "left"
 
 # Automatically hide and show the Dock
-defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide -bool false
 
 # Show only open applications in the Dock
 defaults write com.apple.dock static-only -bool true
@@ -137,7 +137,7 @@ defaults write com.apple.dock tilesize -int 64
 # Speed up Mission Control animations
 defaults write com.apple.dock expose-animation-duration -float 0.1
 
-# Top-left hot corner tuns on screen saver when holding the command key
+# Top-left hot corner turns on screen saver when holding the command key
 defaults write com.apple.dock wvous-tl-corner -int 5
 defaults write com.apple.dock wvous-tl-modifier -int 1048576
 
@@ -166,13 +166,13 @@ sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate.plist Critical
 sudo defaults write /Library/Preferences/com.apple.commerce.plist AutoUpdate -bool true
 
 # Don’t display the annoying prompt when quitting iTerm
-defaults write com.googlecode.iterm2 PromptOnQuit -bool false
-defaults write com.googlecode.iterm2 OnlyWhenMoreTabs -bool false
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.iterm"
-defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+# defaults write com.googlecode.iterm2 PromptOnQuit -bool false
+# defaults write com.googlecode.iterm2 OnlyWhenMoreTabs -bool false
+# defaults write com.googlecode.iterm2 PrefsCustomFolder -string "$HOME/.iterm"
+# defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 
 # Touch bar customization
-defaults write com.apple.controlstrip MiniCustomized "(com.apple.system.brightness, com.apple.system.volume, com.apple.system.mute, com.apple.system.media-play-pause)"
+# defaults write com.apple.controlstrip MiniCustomized "(com.apple.system.brightness, com.apple.system.volume, com.apple.system.mute, com.apple.system.media-play-pause)"
 
 # Save screenshots to a dedicated directory
 mkdir -p "$HOME/Screenshots"
@@ -182,7 +182,7 @@ defaults write com.apple.screencapture location -string "$HOME/Screenshots"
 defaults write com.apple.screencapture type -string "png"
 
 # Disable window closing shortcuts for Steam remote play
-defaults write com.valvesoftware.steam.streamingclient NSUserKeyEquivalents '{Close="\U200b";"Quit steamstreamingclient"="~\Uf707";}'
+# defaults write com.valvesoftware.steam.streamingclient NSUserKeyEquivalents '{Close="\U200b";"Quit steamstreamingclient"="~\Uf707";}'
 
 # Force Xcode to use the built-in version of Git for installing dependencies
 defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES

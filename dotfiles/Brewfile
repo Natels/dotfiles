@@ -1,56 +1,27 @@
-tap "hashicorp/tap"
 tap "jmalloc/grit"
-tap "oven-sh/bun"
 
 brew "adr-tools"
 brew "asdf"
-brew "awscli"
 brew "clang-format" # needed for VSCode protobuf extension to support formatting
-brew "cloudflare-wrangler"
 brew "colordiff"
-brew "deno"
 brew "diff-so-fancy"
 brew "direnv"
-brew "evans"
 brew "gh"
 brew "git"
 brew "go"
-brew "hashicorp/tap/terraform"
 brew "helm"
 brew "jmalloc/grit/grit"
 brew "jq"
-brew "kubectx"
-brew "kubernetes-cli"
 brew "mob"
 brew "node"
-brew "oven-sh/bun/bun"
 brew "vale"
-brew "watch"
 brew "wdiff"
 brew "z"
 brew "zsh"
 
-cask "aldente"
-cask "android-commandlinetools"
-cask "android-studio"
-cask "1password-cli"
-cask "1password"
-cask "calibre"
-cask "docker"
-cask "figma"
-cask "firefox@developer-edition", args: {language: "en-GB"}
 cask "font-victor-mono-nerd-font"
-cask "google-chrome"
-cask "guitar-pro"
-cask "iina"
-cask "iterm2"
-cask "keyboardcleantool"
-cask "messenger"
-cask "scroll-reverser"
-cask "slack"
-cask "steam"
 cask "visual-studio-code"
 
-mas "MusicHarbor", id: 1440405750
-mas "Pixelmator Pro", id: 1289583905
+mas "Xcode", id: 497799835
 mas "TestFlight", id: 899247664
+mas "Developer", id: 640199958

@@ -3,33 +3,33 @@
 set -e
 
 if [[ -z "$EXTENSION_SLUG" ]]; then
-    echo -n "Extension slug (e.g. ezzatron/extension-dotfiles): "
-    read EXTENSION_SLUG
+  echo -n "Extension slug (e.g. natels/extension-dotfiles): "
+  read EXTENSION_SLUG
 fi
 
 if [[ -z "$EXTENSION_SLUG" ]]; then
-    echo "EXTENSION_SLUG not defined."
-    exit 1
+  echo "EXTENSION_SLUG not defined."
+  exit 1
 fi
 
 export EXTENSION_NAME="$(basename "$EXTENSION_SLUG")"
 export EXTENSION_DOTFILES_PATH="$HOME/grit/github.com/$EXTENSION_SLUG"
 
 if [[ -d "$EXTENSION_DOTFILES_PATH" ]]; then
-    echo "Pulling $EXTENSION_SLUG..."
-    pushd "$EXTENSION_DOTFILES_PATH" &>/dev/null
-    git pull
-    popd &>/dev/null
+  echo "Pulling $EXTENSION_SLUG..."
+  pushd "$EXTENSION_DOTFILES_PATH" &>/dev/null
+  git pull
+  popd &>/dev/null
 else
-    echo "Cloning $EXTENSION_SLUG..."
-    git clone "git@github.com:$EXTENSION_SLUG.git" "$EXTENSION_DOTFILES_PATH"
+  echo "Cloning $EXTENSION_SLUG..."
+  git clone "git@github.com:$EXTENSION_SLUG.git" "$EXTENSION_DOTFILES_PATH"
 fi
 
 if [[ -e "$HOME/dotfiles/extensions/$EXTENSION_NAME" ]]; then
-    echo "Dotfiles extension already installed."
+  echo "Dotfiles extension already installed."
 else
-    echo "Installing dotfiles extension..."
-    ln -s "$EXTENSION_DOTFILES_PATH" "$HOME/dotfiles/extensions/$EXTENSION_NAME"
+  echo "Installing dotfiles extension..."
+  ln -s "$EXTENSION_DOTFILES_PATH" "$HOME/dotfiles/extensions/$EXTENSION_NAME"
 fi
 
 for FILE in "$HOME/dotfiles/setup-extension/"*-*.bash; do
