@@ -37,10 +37,6 @@ if [[ $SHLVL = 1 ]]; then
   # -z-4 = set the scrolling window size to 4 lines less than the screen size
   export LESS="-g -i -M -R -S -w -z-4"
 
-  # some tools that use SSH (like Grit) don't support the config setting
-  # "IdentityAgent" - this environment variable serves the same purpose
-  export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-
   # automatically update Homebrew every 5 minutes
   export HOMEBREW_AUTO_UPDATE_SECS=300
 
@@ -62,24 +58,12 @@ if [[ $SHLVL = 1 ]]; then
 
   # add custom binaries to $PATH
   export PATH="/Library/Frameworks/Mono.framework/Versions/Current/bin:$PATH"
-  export PATH="$HOME/.dotnet/tools:$PATH"
   export PATH="$HOME/go/bin:$PATH"
   export PATH="$HOME/bin:$PATH"
   export PATH="$HOME/.asdf/shims:$PATH"
 
   # Silence direnv output
   export DIRENV_LOG_FORMAT=
-
-  # Android
-  export ANDROID_HOME="$HOME/Library/Android/sdk"
-
-  # Java
-  if [ -f "$HOME/.asdf/plugins/java/set-java-home.zsh" ]; then
-    source "$HOME/.asdf/plugins/java/set-java-home.zsh"
-  fi
-
-  # .NET
-  export DOTNET_ROOT="$(brew --prefix)/opt/dotnet/libexec"
 
   # Node.js
   export ASDF_NODEJS_AUTO_ENABLE_COREPACK=true
