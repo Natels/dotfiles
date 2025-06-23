@@ -11,9 +11,6 @@ autoload -Uz "$HOME/.functions/"*(:t)
 # include Powerlevel10k instant prompt
 # see https://github.com/romkatv/powerlevel10k#instant-prompt
 source-if-exists "$HOME/.cache/p10k-instant-prompt-${(%):-%n}.zsh"
-# include z
-# see https://github.com/rupa/z
-source-if-exists "$(brew --prefix)/etc/profile.d/z.sh"
 # include prezto
 # see https://github.com/sorin-ionescu/prezto
 source-if-exists "$HOME/.zprezto/init.zsh"
