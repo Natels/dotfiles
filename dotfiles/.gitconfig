@@ -29,7 +29,7 @@
 	# the "scissors" cleanup mode is nice for entering markdown in commit messages
 	cleanup = scissors
 	# sign commit messages
-	gpgsign = true
+	gpgsign = false
 	# show diffs in commit editors
 	verbose = true
 [core]
@@ -62,9 +62,6 @@
 [difftool]
 	# skip prompting on every invocation of the diff tool
 	prompt = false
-[difftool "vscode"]
-	# specify the correct arguments for VSCode to act as a visual diff tool
-	cmd = code --wait --diff $LOCAL $REMOTE
 [fetch]
 	# before fetching, remove any branches that were deleted upstream
 	prune = true
