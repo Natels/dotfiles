@@ -1,22 +1,5 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # load custom functions
 autoload -Uz "$HOME/.functions/"*(:t)
-
-# include Powerlevel10k instant prompt
-# see https://github.com/romkatv/powerlevel10k#instant-prompt
-source-if-exists "$HOME/.cache/p10k-instant-prompt-${(%):-%n}.zsh"
-# include prezto
-# see https://github.com/sorin-ionescu/prezto
-source-if-exists "$HOME/.zprezto/init.zsh"
-# include Powerlevel10k
-# see https://github.com/romkatv/powerlevel10k
-source-if-exists "$HOME/.p10k.zsh"
 
 # initialize completions
 autoload -Uz compinit && compinit
@@ -53,6 +36,3 @@ for FILE in "$HOME/dotfiles/extensions/"*/dotfiles/.zshrc; do
   source "$FILE"
 done
 unsetopt nullglob
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

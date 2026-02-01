@@ -10,8 +10,6 @@ files for my terminal, shell, prompt, macOS, and other software.
 - Semi-automated [installation]
 - [macOS] customizations
 - [Homebrew] for apps and packages
-- [Prezto] for `zsh` customization
-- [Powerlevel10k] for prompt customization
 - [Git] customizations, including signing with SSH
 - [Touch ID] for `sudo`
 - Can be extended with other (potentially private) dotfiles repos
@@ -33,6 +31,4 @@ bash <(curl -fsSL https://raw.githubusercontent.com/natels/dotfiles/main/install
 [homebrew]: https://brew.sh/
 [installation]: #installation
 [macos]: https://apple.com/macos/
-[powerlevel10k]: https://github.com/romkatv/powerlevel10k
-[prezto]: https://github.com/sorin-ionescu/prezto
 [touch id]: https://wikipedia.org/wiki/Touch_ID
